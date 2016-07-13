@@ -8,7 +8,6 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
 
-
   int age;
   string input;
   std::cout << "Pease enter age" << std::endl;
