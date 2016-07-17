@@ -23,7 +23,9 @@ return true;
 
 int main(){
 
-  string str = "tejas patil";
+  string str;
+  cout<<"please Enter your stirng"<<endl;
+  cin>>str;
 
   if(is_Unique(str)){
     std::cout << "String is unique" << std::endl;
