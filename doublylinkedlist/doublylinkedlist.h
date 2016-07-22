@@ -25,19 +25,19 @@ class DoublyLinkedList
 {
  private:
 
-	
-//class Node decleration and it constructor and Destructor	
-  class Node 
+
+//class Node decleration and it constructor and Destructor
+  class Node
   {
      public:
-	
+
 	Node();
 	Node(string& str);
 	~Node();  //Node dectructor
 
 
 	//Node pointers
-        string* data;
+  string* data;
 	Node* next;
 	Node* prev;
    };
@@ -47,22 +47,22 @@ class DoublyLinkedList
 	Node* current;
 
 
-	
+
  public:
 	//Doublylinkedlist constructor and destructor decleration
  	DoublyLinkedList();
 	~DoublyLinkedList();
-    	bool empty();                                      
-    	void append(string& str);                               
-    	void insertBefore(string& str);                         
-    	void insertAfter(string& str);                          
-    	void remove(string& str);                               
-    	void begin();                                          
-    	void end();                                            
-    	bool next();                                           
-    	bool prev();                                           
-    	bool find(string& str);                                  
-    	const string& getData();     
+    	bool empty();
+    	void append(string& str);
+    	void insertBefore(string& str);
+    	void insertAfter(string& str);
+    	void remove(string& str);
+    	void begin();
+    	void end();
+    	bool next();
+    	bool prev();
+    	bool find(string& str);
+    	const string& getData();
 
 };
 
