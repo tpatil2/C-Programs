@@ -35,13 +35,9 @@ std::queue<int> myqueue3;
 
 
 void add_list(){
-
   int carry=0;
-
    while (!myqueue1.empty() && !myqueue2.empty() ){
-
      int sum=0,unit=0;
-
       sum=myqueue1.front()+myqueue2.front()+carry;
       carry=sum/10;
       unit=sum%10;
@@ -50,61 +46,40 @@ void add_list(){
       myqueue3.push(unit);
    }
 
+   std::cout << "Addition is :" << std::endl;
    while (!myqueue3.empty()) {
-
-     std::cout << "myqueue3 is : "<< myqueue3.front() << std::endl;
+     std::cout << myqueue3.front()<<"  ";
      myqueue3.pop();
-
    }
-
-
-
-
+   std::cout << std::endl;
   return;
+
+
+
 
 }
 
-
-
+//---------------------------------------------
 
 void pass_list(){
-
-
-
   node * temp=new node;
-
   temp=head1;
-
     while(temp->next!=NULL){
       myqueue1.push(temp->data);
-    //  std::cout << "myqueue.front() is now " << myqueue1.front() << '\n';
       temp=temp->next;
     }
-
     myqueue1.push(temp->data);
-  //  std::cout << "myqueue.front() is now " << myqueue1.front() << '\n';
-
     temp=head2;
     while(temp->next!=NULL){
       myqueue2.push(temp->data);
-    //  std::cout << "myqueue2.front() is now " << myqueue2.front() << '\n';
       temp=temp->next;
-
     }
-
     myqueue2.push(temp->data);
-  //  std::cout << "myqueue2.front() is now " << myqueue2.front() << '\n';
-
   return;
 }
 
-
-
-
-
-
+//---------------------------------------------
 void print(){
-
   node * temp=new node;
 
   std::cout << "List first " << std::endl;
@@ -125,21 +100,19 @@ void print(){
 
 }
 
+
+
 int main(){
   node* curr1=new node;
   node* curr2=new node;
-
   int str1[]={7,1,6};
   int str2[]={5,9,2};
 
-
   for(int i=0;i<3;i++){
-
     if(head1==NULL){
       curr1->data=str1[i];
       curr1->next=NULL;
       head1=curr1;
-
     }
     else{
       node * temp=new node;
@@ -147,18 +120,14 @@ int main(){
       curr1->next=temp;
       temp->next=NULL;
       tail1=curr1=temp;
-
     }
   }
-
-
 
   for(int i=0;i<3;i++){
     if(head2==NULL){
       curr2->data=str2[i];
       curr2->next=NULL;
       head2=curr2;
-
     }
     else{
       node * temp=new node;
@@ -166,13 +135,11 @@ int main(){
       curr2->next=temp;
       temp->next=NULL;
       tail2=curr2=temp;
-
     }
   }
 
   print();
   pass_list();
   add_list();
-
 
 }
