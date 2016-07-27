@@ -3,13 +3,24 @@ remove wite spaces in sting
 */
 
 #include <iostream>
+#include <fstream>
+
 
 using namespace std;
 
 
 int main(){
 
-    string str = "T   e  j  as    V a man r a o P   a    t      i  l  ";
+    string str,line;
+
+    ifstream file("myfile.txt");
+
+    while (!file.eof()) {
+     getline(file,line);
+     str+=line;
+    }
+
+    std::cout << "Stirng is : "<< str << std::endl;
 
     for(int i=0;i<str.length();i++){
       int k=0;
@@ -20,6 +31,13 @@ int main(){
     }
 
     std::cout << "Stirng is : "<< str << std::endl;
+
+    ofstream fileop ("output.txt");
+
+    fileop<<str;
+
+    fileop.close();
+    file.close();
 
     return 0;
 
