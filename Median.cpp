@@ -7,8 +7,6 @@ using namespace std;
 
 int main(){
 
-    char arr[] ="tejad \n ok";
-
     int A=9,B=33,C=11;
 
     int median;
