@@ -1,3 +1,8 @@
+/*
+Name Tejas Patil
+https://github.com/tpatil2/C-Programs/blob/master/findgreatest.cpp
+*/
+
 #include <iostream>
 
 using namespace std;
