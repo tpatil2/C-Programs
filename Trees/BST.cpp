@@ -24,82 +24,116 @@ return newNode;
 
 }
 
-void print(node* newroot){
+void print(node* curr){
 
-  if(newroot!=NULL){
-    std::cout << "newroot->data"<<newroot->data << std::endl;
-    print(newroot->right);
-    print(newroot->left);
+  if(curr!=NULL){
+    print(curr->left);
+    std::cout << curr->data<<" ";
+    print(curr->right);
   }
 
   return;
 }
 
-bool search(node* newroot,int data){
+bool search(node* curr,int data){
 
-  if(newroot==NULL) return false;
-  else if(data <= newroot->data) return search(newroot->left,data);
-  else if(data > newroot->data) return search(newroot->right,data);
-  else if(newroot->data == data) return true;
+  if(curr==NULL) return false;
+  else if(data <= curr->data) return search(curr->left,data);
+  else if(data > curr->data) return search(curr->right,data);
+  else if(curr->data == data) return true;
 
 }
 
-node* insertNode(node* newroot, int newdata){
+node* insertNode(node* curr, int newdata){
 
-  if(newroot==NULL){
-    newroot=getNewnode(newdata);
-  }else if(newdata <= newroot->data){
-      newroot->left=(insertNode(newroot->left,newdata));
-  }else if(newdata > newroot->data){
-      newroot->right=(insertNode(newroot->right,newdata));
+  if(curr==NULL){
+    curr=getNewnode(newdata);
+  }else if(newdata <= curr->data){
+      curr->left=(insertNode(curr->left,newdata));
+  }else if(newdata > curr->data){
+      curr->right=(insertNode(curr->right,newdata));
   }
-return newroot;
+return curr;
 
 }
 
 //returns min of right sub-tree
-node* findmin(node* newroot){
+node* findmin(node* curr){
 
-      while(newroot->left != NULL) newroot=newroot->left;
+      while(curr->left != NULL) curr=curr->left;
 
-  return newroot;
+  return curr;
 }
 
-node* deleteNode(node* newroot, int data){
 
-  if(newroot==NULL) return root;
-  else if( data > newroot->data) deleteNode(newroot->right,data);
-  else if( data < newroot->data) deleteNode(newroot->left,data);
-  else if(newroot->data==data){
+//returns max of right sub-tree
+node* findmax(node* curr){
+
+      while(curr->right != NULL) curr=curr->right;
+
+  return curr;
+}
+
+node* deleteNode(node* curr, int data){
+
+  if(curr==NULL) return root;
+  else if( data > curr->data) deleteNode(curr->right,data);
+  else if( data < curr->data) deleteNode(curr->left,data);
+  else if(curr->data==data){
     //case 1  both childs are NULL
-    if(newroot->left ==NULL && newroot->right == NULL){
-      delete newroot;
-      newroot=NULL;
+    if(curr->left ==NULL && curr->right == NULL){
+      delete curr;
+      curr=NULL;
     }//case 2 only one child
-    else if(newroot->left == NULL){
+    else if(curr->left == NULL){
           node* temp = new node;
-          temp=newroot;
-          newroot=newroot->right;
+          temp=curr;
+          curr=curr->right;
           delete temp;
     }
-    else if (newroot->right == NULL) {
+    else if (curr->right == NULL) {
           node* temp= new node;
-          temp=newroot;
-          newroot=newroot->left;
-          delete newroot;
+          temp=curr;
+          curr=curr->left;
+          delete curr;
     }//case 3 node has both childs
-    else if(newroot->left != NULL && newroot->right != NULL ){
+    else if(curr->left != NULL && curr->right != NULL ){
 
           node* temp = new node;
-          temp=findmin(newroot->right);
-          newroot->data=temp->data;
-          newroot->right = deleteNode(newroot->right, temp->data);
+          temp=findmin(curr->right);
+          curr->data=temp->data;
+          curr->right = deleteNode(curr->right, temp->data);
 
     }
   }
 
-return newroot;
+return curr;
 }
+
+/*
+node* successor(node* curr){
+  node* succ = new node;
+  if(curr->right != NULL) return findmin(curr->right);
+  succ = curr-> parent;
+  while( suuc != NULL && curr = succ->right){
+      curr=succ;
+      succ=succ->parent;
+    }
+    return succ;
+}
+
+
+node* predecessor(node* curr){
+  node* pred = new node;
+  if(curr->left != NULL) return findmax(curr->left);
+  pred = curr-> parent;
+  while( pred != NULL && curr = pred->left){
+      curr=pred;
+      pred=pred->parent;
+    }
+    return succ;
+}
+*/
 
 int main(){
 
@@ -112,15 +146,13 @@ root = insertNode(root,17);
 root = insertNode(root,12);
 root = insertNode(root,10);
 
-
+std::cout << "Inorder Tree" << std::endl;
 print(root);
 
 if(search(root,10)) std::cout << "Element found" << std::endl;
-else std::cout << "Not found" << std::endl;
+else std::cout << "\nNot found" << std::endl;
 
-deleteNode(root,15);
-
-print(root);
+//deleteNode(root,15);
 
 
 return 0;
