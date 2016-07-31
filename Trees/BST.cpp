@@ -38,9 +38,10 @@ void print(node* newroot){
 bool search(node* newroot,int data){
 
   if(newroot==NULL) return false;
-  else if(newroot->data == data) return true;
   else if(data <= newroot->data) return search(newroot->left,data);
   else if(data > newroot->data) return search(newroot->right,data);
+  else if(newroot->data == data) return true;
+
 }
 
 node* insertNode(node* newroot, int newdata){
@@ -53,6 +54,38 @@ node* insertNode(node* newroot, int newdata){
       newroot->right=(insertNode(newroot->right,newdata));
   }
 return newroot;
+
+}
+
+
+node* deleteNode(node* newroot, int data){
+  if(newroot==NULL) return root;
+  else if( data > newroot->data) delete(newroot->right,data);
+  else if( data < newroot->data) delete(newroot->left,data);
+  else if(newroot->data==data){
+    //case 1  both childs are NULL
+    if(newroot->left ==NULL && newroot->right == NULL){
+      delete newroot;
+      newroot=NULL;
+    }//case 1 only one child
+    else if(newroot->left == NULL){
+
+
+    }
+    else if (newroot->right == NULL) {
+
+      
+    }
+
+
+
+
+
+
+  }
+
+
+
 
 }
 
