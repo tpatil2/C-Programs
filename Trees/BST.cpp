@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unistd.h>
+#include <queue>
 
 using namespace std;
 
@@ -122,7 +123,6 @@ node* successor(node* curr){
     return succ;
 }
 
-
 node* predecessor(node* curr){
   node* pred = new node;
   if(curr->left != NULL) return findmax(curr->left);
@@ -131,9 +131,34 @@ node* predecessor(node* curr){
       curr=pred;
       pred=pred->parent;
     }
-    return succ;
+    return pred;
 }
 */
+
+
+void print_BFS(node* curr){
+
+  queue<node*> discovered;
+  queue<node*> visited;
+
+    if(curr != NULL) discovered.push(curr);
+
+    while(!discovered.empty()){
+
+        node * temp = discovered.front();
+        visited.push(temp);
+        if(temp->left!=NULL) discovered.push(temp->left);
+        if(temp->right!=NULL) discovered.push(temp->right);
+        discovered.pop();
+    }
+
+    while(!visited.empty()){
+      node* temp = visited.front();
+      visited.pop();
+      std::cout <<  temp->data <<" " << std::endl;
+    }
+
+}
 
 int main(){
 
@@ -154,6 +179,7 @@ else std::cout << "\nNot found" << std::endl;
 
 //deleteNode(root,15);
 
+print_BFS(root);
 
 return 0;
 
