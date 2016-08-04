@@ -31,6 +31,7 @@ void print(node* curr){
     print(curr->left);
     std::cout << curr->data<<" ";
     print(curr->right);
+
   }
 
   return;
@@ -77,31 +78,28 @@ node* findmax(node* curr){
 
 node* deleteNode(node* curr, int data){
 
-  if(curr==NULL) return root;
-  else if( data > curr->data) deleteNode(curr->right,data);
-  else if( data < curr->data) deleteNode(curr->left,data);
-  else if(curr->data==data){
+  if(curr==NULL) return curr;
+  else if( data < curr->data) curr->left=deleteNode(curr->left,data);
+  else if( data > curr->data) curr->right=deleteNode(curr->right,data);
+  else {
     //case 1  both childs are NULL
     if(curr->left ==NULL && curr->right == NULL){
       delete curr;
       curr=NULL;
     }//case 2 only one child
     else if(curr->left == NULL){
-          node* temp = new node;
-          temp=curr;
+          node* temp = curr;
           curr=curr->right;
           delete temp;
     }
     else if (curr->right == NULL) {
-          node* temp= new node;
-          temp=curr;
+          node* temp = curr;
           curr=curr->left;
-          delete curr;
+          delete temp;
     }//case 3 node has both childs
     else if(curr->left != NULL && curr->right != NULL ){
 
-          node* temp = new node;
-          temp=findmin(curr->right);
+          node* temp = findmin(curr->right);
           curr->data=temp->data;
           curr->right = deleteNode(curr->right, temp->data);
 
@@ -138,38 +136,49 @@ node* predecessor(node* curr){
 
 void print_BFS(node* curr){
 
-  queue<node*> discovered;
-  queue<node*> visited;
+    std::cout << "Inside BFS" << std::endl;
+  //  print(curr);
+    std::cout <<"\n"<< std::endl;
 
-    if(curr != NULL) discovered.push(curr);
+    if(curr == NULL) return;
+    queue<node*> discovered;
+    discovered.push(curr);
 
     while(!discovered.empty()){
 
         node * temp = discovered.front();
-        visited.push(temp);
+        discovered.pop();
+        if(temp != NULL) std::cout <<  temp->data <<" " << std::endl;
         if(temp->left!=NULL) discovered.push(temp->left);
         if(temp->right!=NULL) discovered.push(temp->right);
-        discovered.pop();
+
     }
 
-    while(!visited.empty()){
-      node* temp = visited.front();
-      visited.pop();
-      std::cout <<  temp->data <<" " << std::endl;
+}
+
+node* common_ancestor(node* curr, int a, int b){
+
+    if(curr->data < a && curr->data <b){
+         curr = common_ancestor(curr->right, a,b);
     }
+    else if(curr->data > a && curr->data > b){
+         curr = common_ancestor(curr->left, a,b);
+    }else
+      return curr;
 
 }
 
 int main(){
 
-
 root = insertNode(root,15);
-root = insertNode(root,18);
 root = insertNode(root,11);
-root = insertNode(root,16);
-root = insertNode(root,17);
-root = insertNode(root,12);
+root = insertNode(root,18);
 root = insertNode(root,10);
+root = insertNode(root,16);
+root = insertNode(root,12);
+root = insertNode(root,17);
+root = insertNode(root,17);
+
 
 std::cout << "Inorder Tree" << std::endl;
 print(root);
@@ -177,10 +186,19 @@ print(root);
 if(search(root,10)) std::cout << "Element found" << std::endl;
 else std::cout << "\nNot found" << std::endl;
 
-//deleteNode(root,15);
 
+std::cout << "\nBFS" << std::endl;
 print_BFS(root);
 
-return 0;
+//root = deleteNode(root,18);
 
+std::cout << "After deleting" << std::endl;
+print(root);
+
+std::cout << "\nBFS" << std::endl;
+print_BFS(root);
+std::cout << "in commin " << std::endl;
+node* temp = common_ancestor(root,17,17);
+std::cout << "common_ancestor is : "<<temp->data << std::endl;
+return 0;
 }
