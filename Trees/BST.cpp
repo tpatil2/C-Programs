@@ -1,6 +1,8 @@
 #include <iostream>
 #include <unistd.h>
 #include <queue>
+#include <climits>
+
 
 using namespace std;
 
@@ -160,11 +162,28 @@ node* common_ancestor(node* curr, int a, int b){
 
     if(curr->data < a && curr->data <b){
          curr = common_ancestor(curr->right, a,b);
-    }
+       }
     else if(curr->data > a && curr->data > b){
          curr = common_ancestor(curr->left, a,b);
     }else
       return curr;
+}
+
+bool IsBST(node* curr, int max, int min){
+
+    if(curr == NULL) return true;
+
+    if( curr->data < max && curr->data > min
+    && IsBST(curr->left,curr->data, min)
+    && IsBST(curr->right,max,curr->data))
+    return true;
+    else return false;
+
+}
+
+bool BST_check(node* root){
+
+  return IsBST(root, INT_MAX, INT_MIN);
 
 }
 
@@ -177,7 +196,7 @@ root = insertNode(root,10);
 root = insertNode(root,16);
 root = insertNode(root,12);
 root = insertNode(root,17);
-root = insertNode(root,17);
+//root = insertNode(root,17);
 
 
 std::cout << "Inorder Tree" << std::endl;
@@ -200,5 +219,8 @@ print_BFS(root);
 std::cout << "in commin " << std::endl;
 node* temp = common_ancestor(root,17,17);
 std::cout << "common_ancestor is : "<<temp->data << std::endl;
+
+if(BST_check(root)) std::cout << "YES IT Is BST" << std::endl;
+else std::cout << "IT IS NOT BST" << std::endl;
 return 0;
 }
