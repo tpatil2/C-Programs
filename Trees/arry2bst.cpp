@@ -59,6 +59,40 @@ void print_BFS(node* curr){
 
 }
 
+
+void level_oreder_print(node* curr){
+
+  std::cout << "Level order Print" << std::endl;
+    if(curr==NULL) return;
+
+    queue<node*> q1;
+    queue<node*> q2;
+    q1.push(curr);
+
+    while(!q1.empty() || !q2.empty()){
+
+      while(!q1.empty()){
+        node *temp1 = q1.front();
+        q1.pop();
+        std::cout << temp1->data<< " ";
+        if(temp1->left != NULL) q2.push(temp1->left);
+        if(temp1->right != NULL) q2.push(temp1->right);
+      }
+      std::cout<< std::endl;
+      while(!q2.empty()){
+        node *temp2 = q2.front();
+        q2.pop();
+        std::cout << temp2->data<< " ";
+        if(temp2->left != NULL) q1.push(temp2->left);
+        if(temp2->right != NULL) q1.push(temp2->right);
+      }
+      std::cout<< std::endl;
+
+    }
+
+  return;
+}
+
 node* insert_node(int arr[], int start, int end){
 
   if(start > end)
@@ -81,6 +115,7 @@ int main(){
   root = insert_node(arr,0,size-1);
   print_inorder(root);
   print_BFS(root);
+  level_oreder_print(root);
 
   return 0;
 
