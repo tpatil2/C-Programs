@@ -14,8 +14,5 @@ int main(){
   std::cout <<"0[a+1]    "<<0[a+1] << std::endl;
   std::cout <<"(1+3)[a+1]"<<(1+3)[a+1]<< std::endl;
 
-
-
-
   return 0;
 }
