@@ -187,6 +187,16 @@ bool BST_check(node* root){
 
 }
 
+
+bool Is_balanced(node* curr){
+
+  if(curr== NULL) retun true;
+
+
+
+
+}
+
 int main(){
 
 root = insertNode(root,15);
