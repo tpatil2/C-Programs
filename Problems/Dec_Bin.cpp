@@ -19,47 +19,46 @@ Copyright 2009–2016 by Codility Limited. All Rights Reserved. Unauthorized cop
 
 using namespace std;
 
+int solution(int n){
 
-int main(){
-
-    int n = 10450;
     stack<int> bin;
     int currlen=0;
     int maxlen=0;
     bool found_one=false;
     bool found_zero=false;
 
-
-    while(n>0){
-      int i = n%2;
-      if(i==1){
-        if(found_zero == true){
-          if(maxlen < currlen) maxlen = currlen;
-          currlen = 0;
+      while(n>0){
+        int i = n%2;
+        if(i==1){
+          if(found_zero == true){
+            if(maxlen < currlen) maxlen = currlen;
+            currlen = 0;
+          }
+          found_one=true;
+          found_zero=false;
+        }else {
+          if(found_one==true) {
+            found_zero=true;
+            currlen++;
+          }
         }
-        found_one=true;
-        found_zero=false;
-
-      }else {
-        if(found_one==true) {
-          found_zero=true;
-          currlen++;
-        }
+        bin.push(i);
+        n=n/2;
+      }
+      //print binary number
+      while(!bin.empty()){
+        std::cout <<bin.top() <<" ";
+        bin.pop();
       }
 
-      bin.push(i);
-      n=n/2;
-    }
+return maxlen;
+
+}
 
 
 
-    while(!bin.empty()){
-      std::cout <<bin.top() <<" ";
-      bin.pop();
-    }
+int main(){
 
-    std::cout << "\nmaxlen "<< maxlen << std::endl;
-
-
+  std::cout << "\nMAX Binary Gap is  "<< solution(10450)  << std::endl;
 
 }
