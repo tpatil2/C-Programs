@@ -15,7 +15,6 @@ In your solution, focus on correctness. The performance of your solution will no
 Copyright 2009–2016 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 */
 
-
 #include <iostream>
 #include <vector>
 
@@ -38,7 +37,6 @@ vector<int> solution(vector<int> &A, int K) {
             j= A.size()-2;
         }
     }
-
     // write your code in C++11 (g++ 4.8.2)
     return A;
 }
@@ -50,6 +48,7 @@ vector<int> A = { 3, 8, 9, 7, 6};
 for(auto it=A.begin();it != A.end();it++){
     std::cout << *it<<" ";
 }
+
 std::cout << "\nAfter shifting" << std::endl;
 A = solution(A,3);
 
