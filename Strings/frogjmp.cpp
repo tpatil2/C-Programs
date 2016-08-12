@@ -22,23 +22,25 @@ Complexity:
 Copyright 2009–2016 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 */
 
-
-
-
-
-
 // you can use includes, for example:
 // #include <algorithm>
 #include <cmath>
+#include <iostream>
 
-// you can write to stdout for debugging purposes, e.g.
-// cout << "this is a debug message" << endl;
+using namespace std;
 
 int solution(int X, int Y, int D) {
     // write your code in C++11 (g++ 4.8.2)
     long long jump;
     jump = ceil(abs(double(X-Y))/D);
 
-    return jump;
+return jump;
+}
 
+
+int main(){
+
+  std::cout << "Min number of jumps are : "<< solution(50,2222,30) << std::endl;
+
+  return 0;
 }
