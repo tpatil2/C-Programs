@@ -37,7 +37,7 @@ vector<int> solution(vector<int> &A, int K) {
             j= A.size()-2;
         }
     }
-    // write your code in C++11 (g++ 4.8.2)
+    // write your code in C++1git1 (g++ 4.8.2)
     return A;
 }
 
