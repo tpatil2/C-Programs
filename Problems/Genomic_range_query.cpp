@@ -27,11 +27,10 @@ using namespace std;
 vector<int> solution(string &S, vector<int> &P, vector<int> &Q) {
     // write your code in C++11 (g++ 4.8.2)
     vector<int> R;
-
-    int Min=4;
+    unsigned int size = P.size();
     //  string S = "CAGCCTA";
     //              0123456
-    for(unsigned int i=0;i<P.size();i++){
+    for(unsigned int i=0;i<size;i++){
 
           string temp = S.substr(P[i],Q[i]-P[i]+1);
           sort(temp.begin(),temp.end());
