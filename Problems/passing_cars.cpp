@@ -4,49 +4,26 @@
 using namespace std;
 
 int solution(vector<int> &A) {
-    // write your code in C++11 (g++ 4.8.2)
+  //NOTE: REF : https://codesays.com/2014/solution-to-passing-cars-by-codility/
+  int count = 0;
+  int passing  = 0;
 
-    int size = A.size();
-    vector<int> cross;
-    bool zero = true;
-
-    if(A[0]==0) {
-        cross.push_back(A[0]);
-        }else{
-            cross.push_back(0);
-            zero = false;
-            }
-
-    for(int i=1 ; i<size; i++){
-        if(zero==true){
-            if(A[i]==1){
-                for(unsigned int it=0;it<cross.size();it++){
-                        cross[it]+=1;
-                    }
-                }else{
-                    cross.push_back(A[i]);
-                    }
-        }else if(A[i]==0){
-                for(unsigned int it=0;it<cross.size();it++){
-                    cross[it]+=1;
-                    }
-                }else{
-                    cross.push_back(0);
-                }
-    }
-
-    int sum=0;
-      for(unsigned int t=0;t<cross.size();t++){
-                   sum+=cross[t];
-                    }
-
-    return sum;
+ // for each value in the vector A
+  for (int i : A)
+  {
+      if (i == 1) {
+          passing += count;
+          if(passing > 1000000000)
+              return -1;
+      }else
+          count++;
+  }
+  return passing;
 }
 
 int main(){
 
-  vector<int> A = {0,0};
-
+  vector<int> A = {1,0,1};
   std::cout << "Total Pairs are : "<<solution(A)<< std::endl;
 
 
