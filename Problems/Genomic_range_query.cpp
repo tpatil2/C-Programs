@@ -20,29 +20,29 @@ Write a function:
 */
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 vector<int> solution(string &S, vector<int> &P, vector<int> &Q) {
     // write your code in C++11 (g++ 4.8.2)
-    vector<int> factor;
+    vector<int> R;
+
     int Min=4;
-
+    //  string S = "CAGCCTA";
+    //              0123456
     for(unsigned int i=0;i<P.size();i++){
-           for(int j=P[i] ;j<=Q[i];j++){
-               if(S[j]=='A') Min=min(Min,1);
-               else if(S[j]=='C') Min=min(Min,2);
-               else if(S[j]=='G') Min=min(Min,3);
-               else if(S[j]=='T') Min=min(Min,4);
-               }
 
-              factor.push_back(Min);
-              Min=4;
+          string temp = S.substr(P[i],Q[i]-P[i]+1);
+          sort(temp.begin(),temp.end());
+
+          if(temp[0]=='A') R.push_back(1);
+          else if(temp[0]=='C') R.push_back(2);
+          else if(temp[0]=='G') R.push_back(3);
+          else if(temp[0]=='T') R.push_back(4);
         }
 
-
-
-    return factor;
+    return R;
 }
 
 int main(){
