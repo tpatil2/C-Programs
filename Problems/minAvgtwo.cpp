@@ -5,25 +5,26 @@ using namespace std;
 
 int solution(vector<int> &A) {
     // write your code in C++11 (g++ 4.8.2)
-    double min_pair=A[0]+A[1]/2.0;
+    int N = A.size();
+    double min_avg=A[0]+A[1]/2.0;
     int min_index=0;
 
-    for(unsigned int i=0;i<A.size()-2;i++){
+    for(unsigned int i=2;i<N;i++){
 
-        if((A[i]+A[i+1])/2 < min_pair){
-            min_pair=(A[i]+A[i+1])/2;
-            min_index=i;
-            }
-        if((A[i]+A[i+1]+A[i+2])/3 < min_pair){
-            min_pair=(A[i]+A[i+1]+A[i+2])/3;
-            min_index=i;
-            }
+      double avg1 = (A[i - 1] + A[i]) / 2.0;
+      double avg2 = (A[i - 2] + A[i - 1] + A[i]) / 3.0;
+
+        if (avg1 < min_avg){
+            min_index = i - 1;
+            min_avg = avg1;
+        }
+        if (avg2 < min_avg){
+            min_index = i - 2;
+            min_avg = avg2;
         }
 
-    if((A[-1]+A[-2])/2 < min_pair){
-        min_pair=(A[-1]+A[-2])/2;
-        min_index=A.size()-2;
-        }
+    }
+
 
     return min_index;
 }
@@ -32,7 +33,7 @@ int main(){
 
   vector<int> A = {4, 2, 2, 5, 1, 5, 8};
 
+std::cout << "Starting index of pair is "<<solution(A) << std::endl;
 
-
-  return 0
+  return 0;
 }
