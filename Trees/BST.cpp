@@ -178,23 +178,15 @@ bool IsBST(node* curr, int max, int min){
     && IsBST(curr->right,max,curr->data))
     return true;
     else return false;
-
 }
 
 bool BST_check(node* root){
-
   return IsBST(root, INT_MAX, INT_MIN);
-
 }
 
 
 bool Is_balanced(node* curr){
-
   if(curr== NULL) retun true;
-
-
-
-
 }
 
 int main(){
@@ -218,7 +210,6 @@ else std::cout << "\nNot found" << std::endl;
 
 std::cout << "\nBFS" << std::endl;
 print_BFS(root);
-
 //root = deleteNode(root,18);
 
 std::cout << "After deleting" << std::endl;
@@ -233,4 +224,5 @@ std::cout << "common_ancestor is : "<<temp->data << std::endl;
 if(BST_check(root)) std::cout << "YES IT Is BST" << std::endl;
 else std::cout << "IT IS NOT BST" << std::endl;
 return 0;
+
 }

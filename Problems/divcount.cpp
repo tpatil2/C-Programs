@@ -19,8 +19,10 @@ Complexity:
 using namespace std;
 
 int solution(int A,int B, int K){
-  int diff= B/K-A/K;
-  if(A%K == 0) diff+=1;
+  int diff= B/K-A/K; // 0-0
+
+  if(A%K == 0) diff+=1; // 22
+
   return diff;
 }
 

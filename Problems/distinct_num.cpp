@@ -32,8 +32,10 @@ int main(){
 
   vector<int> A = {2,1,3,2,1,1,2,6,8,6,4,2,1};
 
-  std::cout << "Number of Distince elements are : "<<
-  solution(A) << std::endl;
+//  std::cout << "Number of Distince elements are : "<<
+//  solution(A) << std::endl;
+
+  std::cout << "last elements : "<< *(A.end()-2) << std::endl;
 
   return 0;
 }

@@ -17,6 +17,42 @@ public:
 };
 
 
+node* deletnode(node* list, int x){
+
+    // When node to be deleted is head node
+
+    if(list == n)
+    {
+        if(head->next == NULL)
+        {
+            printf("There is only one node. The list can't be made empty ");
+            return;
+        }
+
+        /* Copy the data of next node to head */
+        head->data = head->next->data;
+
+        // store address of next node
+        n = head->next;
+
+        // Remove the link of next node
+        head->next = head->next->next;
+
+        // free memory
+        free(n);
+
+        return;
+
+  }
+
+
+
+
+
+  return list
+}
+
+
 int main(){
 
   node* head;

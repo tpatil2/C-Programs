@@ -2,7 +2,7 @@
 Given an image represented by an NxN matrix, where each pixel in the image
  is 4bytes, write a method to rotate the image by 90 degrees.
  Can you do this in place
- NOTE: This is not inplace 
+ NOTE: This is not inplace
 */
 
 #include <iostream>

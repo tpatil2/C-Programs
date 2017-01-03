@@ -36,6 +36,7 @@ std::queue<int> myqueue3;
 
 void add_list(){
   int carry=0;
+
    while (!myqueue1.empty() && !myqueue2.empty() ){
      int sum=0,unit=0;
       sum=myqueue1.front()+myqueue2.front()+carry;
