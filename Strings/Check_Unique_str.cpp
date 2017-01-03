@@ -9,18 +9,18 @@ using namespace std;
 
 bool is_Unique(string str){
 
-    bool arr[256] ={false};
+  bool arr[256] = {false};
 
-    for(int i=0; i<str.length();i++){
-
-      int val = str.at(i);
-
-      if(arr[val]==false) arr[val]=true;
-
-      else return false;
+  for (int i=0;i<str.length();i++){
+    int val = str[i];
+    if(arr[val] == true){
+      return false;
+    }else{
+      arr[val]=true;
     }
+  }
 
-return true;
+  return true;
 
 }
 

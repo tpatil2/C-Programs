@@ -1,0 +1,8 @@
+dir1
+	dir11
+		ak.txt
+	dir12
+		dir112
+		ab.jpg
+dir2
+	cd.png

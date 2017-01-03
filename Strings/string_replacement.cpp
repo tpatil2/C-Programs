@@ -15,34 +15,26 @@ using namespace std;
 
 void replace_spaces(char* str1, int length){
 
-    int newlength, spaces=0;
-    //calculate number of spaces
-    for(int i=0;i<=length;i++){
-      if(str1[i]==' '){
-        spaces++;
+      int spaces=0;
+      int newlength;
+
+      for(int i=0 ; i<length;i++){
+        if(str1[i]==' '){
+          spaces++;
+        }
       }
-    }
-    newlength=length+spaces*2;
+      newlength = length + (2*spaces);
+      str1[newlength] = '\0';//end of string
 
-    str1[newlength]='\0';
-    std::cout << "newlength is: "<<newlength << std::endl;
-    for(int i=length-1;i>=0;i--){
-      if(str1[i]==' '){
-
-        str1[newlength-1]='0';
-        str1[newlength-2]='2';
-        str1[newlength-3]='%';
-        newlength=newlength-3;
-
+      for(int i = length-1;i>=0;i--){
+          if(str1[i]==' '){
+            str1[--newlength]='%';
+            str1[--newlength]='0';
+            str1[--newlength]='2';
+          }else{
+            str1[--newlength]=str1[i];
+          }
       }
-      else{
-        str1[newlength-1]=str1[i];
-        newlength=newlength-1;
-    }
-
-    }
-
-  return;
 
 }
 
