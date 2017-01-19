@@ -1,0 +1,7 @@
+Sachin 101
+Rahul 45
+Dhoni 89
+Virat 111
+Yuvraj 66
+kedar 99
+Sehwag 43
