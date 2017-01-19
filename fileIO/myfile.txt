@@ -1,0 +1,2 @@
+Thisismyfile.txt this is a sample file
+ok this is second line~
